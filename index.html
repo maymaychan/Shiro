@@ -33,7 +33,7 @@
         max-width: 400px;
         height: auto;
         position: relative;
-        border-radius:15%;
+        border-radius: 15%;
 
 
 
@@ -47,6 +47,7 @@
 
 
     .sample_box13 {
+        writing-mode: vertical-rl;
         padding: 1em 1.5em;
         margin: 2em 0;
         background: #ddf2fa;
@@ -57,23 +58,56 @@
         color: #333;
         top: 50px;
         left: 50px;
-        display: flex;
+    }
 
         /*文字色*/
         img [src="DSC_3425.JPG"] {
-            width: 150px;
+            width: 100px;
             height: auto;
         }
-
-
-        table {
-            margin: auto;
-        }
-
-        center {
-            text-alian: center;
-        }
 </style>
+<script type="text/javascript"><!--
+myMsg = "こんにちわ！豆柴 しろです。";
+myCnt = 0;
+
+function myFunc(){
+     document.myForm.myFormMes.value = myMsg.substring( 0 , myCnt ) + "_";
+     myCnt = ( myCnt == myMsg.length ) ? 0 : myCnt+1;
+}
+// --></SCRIPT>
+
+<form name="myForm">
+<input type="text" size="30" name="myFormMes">
+</form>
+<script type="text/javascript"><!--
+setInterval("myFunc()",200);
+// --></script>
+<form>
+<input type="button" value="戻る" onclick="history.back()">
+<input type="button" value="更新" onclick="location.reload(true)">
+<input type="button" value="進む" onclick="history.forward()">
+<input type="button" value="トップページへ" onclick="location.href='http://www.red.oit-net.jp/tatsuya/index.htm'">
+</form>
+
+<script type="text/javascript"><!--
+myTbl = new Array("日","月","火","水","木","金","土");
+myD = new Date();
+
+myYear = myD.getFullYear();
+myMonth = myD.getMonth() + 1;
+myDate = myD.getDate();
+myDay = myD.getDay();
+myHours = myD.getHours();
+myMinutes = myD.getMinutes();
+mySeconds = myD.getSeconds();
+
+myMess1 = myYear + "年" + myMonth + "月" + myDate + "日";
+myMess2 = myTbl[myDay] + "曜日";
+myMess3 = myHours + "時" + myMinutes + "分" + mySeconds + "秒";
+myMess = myMess1 + " " + myMess2 + " " + myMess3;
+document.write( myMess );
+// --></script>
+
 
 <body>
     <div class="class1">
@@ -81,7 +115,7 @@
         <h1>
             豆柴 しろ
         </h1>
-<p><img src="IMG_3473.jpg"></p>
+        <p><img src="IMG_3473.jpg"></p>
 
 
     </div>
@@ -90,18 +124,18 @@
     <div class="sample_box13">
         <figure class="image"><img src="DSC_3425.JPG"></figure>
         <h2>自己紹介</h2>
-        <p>2021年3月1日生まれ<br>お父さん　一太郎さん<br>お母さん　ひとみさん<br></p>
-    
-    
+        <p>二〇二一年三月一日生まれ<br>お父さん　一太郎さん<br>お母さん　ひとみさん<br></p>
 
 
 
-    <p>賑やかな4人家族の一員となりました。
-        楽しい毎日です。</p>
-    <p>楽しい日々を日記にしました。ぜひ、ご覧ください♡</p>
+
+
+        <p>賑やかな四人家族の一員となりました。
+            楽しい毎日です。</p>
+        <p>楽しい日々を日記にしました。ぜひ、ご覧ください♡</p>
     </div>
 
-    <a href="page1.html">#しろちゃんの1日#こちらをクリック☆</a>
+    <a href="page1.html">#しろちゃんの1日#こちらをクリック☆</a><br>
     <a href="page2.html">#しろちゃん日記#こちらをクリック☆</a>
 
 </body>

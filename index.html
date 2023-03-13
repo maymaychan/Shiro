@@ -17,7 +17,29 @@
     body {
         background-color: #e4d2d8;
     }
-
+    
+.box17{
+    margin:2em 0;
+    position: relative;
+    padding: 0.5em 1.5em;
+    border-top: solid 2px #009900;
+    border-bottom: solid 2px #009900;
+}
+.box17:before, .box17:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: #009900;
+}
+.box17:before {left: 10px;}
+.box17:after {right: 10px;}
+.box17 p {
+    margin: 0; 
+    padding: 0;
+}
 img{width:100%;
 height: 650px;
 object-fit:cover;
@@ -25,7 +47,13 @@ object-fit:cover;
 .image {
 	position: relative;
 }
-
+p{position: absolute;
+    top:50%;
+    left:20%;
+    padding:0;
+    margin:0;
+    font-size:50px;
+    color: skyblue;}
 .image::after {
 	content: '';
 	position: absolute;
@@ -43,7 +71,7 @@ object-fit:cover;
      
 </style>
 <script type="text/javascript"><!--
-myMsg = "こんにちわ！しろです。";
+myMsg = "はじめまして！しろです。";
 myCnt = 0;
 
 function myFunc(){
@@ -82,20 +110,22 @@ myMess2 = myTbl[myDay] + "曜日";
 myMess3 = myHours + "時" + myMinutes + "分" + mySeconds + "秒";
 myMess = myMess1 + " " + myMess2 + " " + myMess3;
 document.write( myMess );
-// --></script>
-
+// --></script><br>
 
 <body>
-    
+    <div class="box17">
+    <h1>ようこそ！</h1>
+</div>
         <div class="image">
-    
-        <img src="IMG_3473.jpg"></div>
+            <p>自己紹介<br>
+                しろ<br>
+                2021年3月1日生まれ<br>
+                食べることとお昼寝が大好きな男の子です。<br>
+                </p>
+        <img src="IMG_3473.jpg">
+        </div>
 
 
-
-
-
-    
 
 
 

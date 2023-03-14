@@ -35,6 +35,21 @@
   document.addEventListener('DOMContentLoaded', () => {
       ticker()
   })</script>
+  <script type="text/javascript"><!--
+    myImage=new Array(
+        "DSC_3425.JPG"
+        "DSC_4326.JPG"
+    );
+    myNowCnt==0;
+    function myChange(){
+        if(myNowCnt==myImage.length-1){myNowCnt=0;}else{myNowCnt++;}
+        document.sshow.src=myImage[myNowCnt];setTimeout("myChange()",1000);
+    }
+    //--></script>
+    <image src="DSC_3425.JPG" width="200" height="auto" name="sshow">
+        <script type="text/javascript"><!--
+        myChange();
+        //--></script>
 
 
 

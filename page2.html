@@ -1,27 +1,45 @@
-<!DOCTYPE html>
-<html lang ="ja">
-  <head>
-    <meta charset = "utf-8">
-    <title>スライダー</title>
-  </head>
-<style>
-    .sliderbox img{width: 30%;
- position: relative;
- text-align: center;
-    height: auto;
-    object-fit: cover;
+<style type="text/css">
+    .fadeout{
+    opacity: 0;
+    transition: 3s ease-in-out;
+    -webkit-transition: 3s ease-in-out;
     }
-</style>
-  <body>
-    <div class="sliderbox">
-        <img src="DSC_3425.JPG" id="slideshow"><br>
-        <img src="IMG_3473.jpg">
-        <img src="DSC_4326.JPG">
-        <img src="IMG_1964.jpg"></div>
-        <div><input type="button" value="開始／停止"id="startstopbtn">
+    .fadein{
+    opacity: 1;
+    transition: 3s ease-in-out;
+    -webkit-transition: 3s ease-in-out;
+    }
+    </style>
+    <script type="text/javascript"><!--
+    myImage = new Array(	// 画像ファイル名の設定
+    "DSC_3425.JPG",		// 鯉
+    "DSC_4326.JPG",		// 滝
+    "IMG_1750.jpg",		// 石仏
+    "IMG_1964.jpg",		// 橋
+    "IMG_3473.jpg"		// 山
+    );	
+    myNowCnt = -1;		// 現在表示している配列番号
+    myflg = 0;		// どっちを表示して、どっちを消すかのフラグ
+    function myChange(){	// スライドショーメイン関数
+        myNowCnt = (myNowCnt<myImage.length-1) ? myNowCnt+1 : 0;		// 次の配列番号
+        myflg = (myflg==0) ? 1 : 0;						// 表示・非表示フラグ反転
+        if (myflg == 0){
+            document.getElementById("idshow1").src = myImage[myNowCnt];		// 次の画像をセットする
+            document.getElementById("idshow1").className = "fadein";		// フェードイン
+            document.getElementById("idshow2").className = "fadeout";	// フェードアウト
+        }else{
+            document.getElementById("idshow2").src = myImage[myNowCnt];		// 次の画像をセットする
+            document.getElementById("idshow1").className = "fadeout";	// フェードアウト
+            document.getElementById("idshow2").className = "fadein";		// フェードイン
+        }
+        setTimeout( "myChange()" , 4000 );					// 4秒周期に画像を更新する
+    }	
+    // --></script>
+    <div style="border-style:ridge; border-width:8px; border-radius:10px; box-shadow:10px 10px 10px rgba(0,0,0,0.5); border-color:#800000; width:320px;">
+    <img id="idshow1" class="fadeout" style="position:absolute;" src="IMG_088.gif" width="320" height="240">
+    <img id="idshow2" class="fadein" src="IMG_0141.gif" width="320" height="240">
     </div>
+    <script type="text/javascript"><!--
+    myChange(); 
+    // --></script>
     
-   <script src = "../js/chenge_image.js"></script>
-  </body>
-
-</html>

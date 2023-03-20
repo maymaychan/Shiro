@@ -83,6 +83,59 @@
         -ms-filter: grayscale(100%);
         filter: grayscale(100%);
     }
+    .img-sepia{
+        padding: 0;!important;
+    }
+    .img-sepia img{
+        -ms filter:sepia(60%);
+        filter:sepia(60%);
+    }
+    .img-saturate{
+        padding:0 !important;
+    }
+    .img-saturate img{
+        -ms-filter:saturate(20%);
+        filter:saturate(20%);
+    }
+    .img-contrast{
+        padding:0 !important;
+    }
+    .img-contrast img{
+        -ms-filter:contrast(120%);
+        filter:contrast(120%);
+    }
+    .img-brightness{
+        padding:0 !important;
+ }:right
+ .img-brightness img{
+    -ms-filter:brightness(120%);
+    filter:brightness(120%);
+ }
+
+
+ .img-text{
+    position: relative;
+    padding: 0; !important;
+ }
+ .img-text .img-text-paragraph{
+    position:absolute;
+    top:80%;
+    left:50%;
+    -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  font-size: 1.2em;
+  line-height:1.8;
+  font-weight:bold;
+  color: #fff;
+  filter: drop-shadow(0px 0px 3px #333);
+  }
+.img-text img{
+  width: 100%;
+}
+ 
 </style>
 <p class="img-border">
     <img src="IMG_5309.jpg">
@@ -119,3 +172,18 @@
 <p class="img-grayscale">
     <img src="IMG_5309.jpg">
 </p>
+<p class="img-sepia">
+    <img src="IMG_5309.jpg">
+</p>
+<p class="img saturate">
+    <img src="IMG_5309.jpg">
+</p>
+<p class="img-contrast">
+    <img src="IMG_5309.jpg">
+</p>
+<p class="img-brightness">
+    <img src="IMG_5309.jpg">
+</p>
+<div class="img-text">
+    <img src="IMG_5309.jpg">
+    <p class="img-text-paragraph">A Happy New Year 2023</p></div>

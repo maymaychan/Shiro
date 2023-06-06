@@ -1,410 +1,90 @@
-<style>
+<head>
+    <meta charset = "utf-8">
+    <title>ヒント : カレンダー | 独学 Webプログラミング! - YWORK</title>
+    <style>
+       table,th,td{
+          border:1px;
+          border-color: #000;
+          border-style:solid;
+          padding: 10px;
+          border-collapse: collapse;
+       }
+       td{text-align: right;}
+    </style>
+ </head>
+ <body>
+    <script>
+
+       let objDate = new Date();
+       let vArrDay = new Array("日","月","火","水","木","金","土");
+       let vtdid = 0;
+
+       //----------------------------------------------------------何月のカレンダー表示
+       document.write('<p = id="p1"></p>');
+       //----------------------------------------------------------曜日表示
+       document.write("<table><tr>");
+       for(let i=0;i<7;i++){
+          document.write("<th>" + vArrDay[i] + "</th>");
+       }
+       document.write("</tr>");
+       //----------------------------------------------------------6週*7日の表を作成（IDオートナンバー)
+       for(let j=0;j<6;j++){
+          document.write("<tr>");
+          for(i=0;i<7;i++){
+             document.write('<td id="tdid'+ vtdid + '"></td>');
+             vtdid = vtdid + 1;
+          }
+          document.write("</tr>");
+       }
+       document.write("</table><br>");
+       //scriptでボタンを表示しなくても普通にHTMLで作成してもOK! 気分でJSで書いてみただけです
+       document.write('<input type="button" value="前月" id="funPrev"> ');
+       document.write('<input type="button" value="次月" id="funNext">');
     
-    .img-border {
-        padding: 0 !important;
-    }
+       //----------------------------------------------------------今月
+       document.getElementById("p1").innerHTML = objDate.getFullYear() + '年' + (objDate.getMonth() + 1) + ' 月のカレンダー<br>';
+       j = 1;                                                      //1日からカウントする為だけの変数
+       objDate.setDate(1);
+       let vEndDate = new Date(objDate.getFullYear(),objDate.getMonth() + 1, 0);   //今月末日取得
+       for(let x=0;x<42;x++){                                          //表の値を初期化
+          document.getElementById("tdid" + x).innerHTML = "　";
+       }
+       for(i=objDate.getDay();i<vEndDate.getDate() + objDate.getDay();i++){
+          document.getElementById("tdid" + i).innerHTML = j;
+          j = j + 1;
+       }
+       
+       //----------------------------------------------------------前月
+       document.getElementById("funPrev").onclick = function(){
+          objDate.setMonth(objDate.getMonth() -1 );
+          document.getElementById("p1").innerHTML = objDate.getFullYear() + '年' + (objDate.getMonth() + 1) + ' 月のカレンダー<br>';
+          j = 1;                                                      //1日からカウントする為だけの変数
+          objDate.setDate(1);
+          let vEndDate = new Date(objDate.getFullYear(),objDate.getMonth() + 1, 0);   //今月末日取
+          for(let x=0;x<42;x++){                                          //表の値を初期化
+             document.getElementById("tdid" + x).innerHTML = "　";
+          }
+          for(i=objDate.getDay();i<vEndDate.getDate() + objDate.getDay();i++){
+             document.getElementById("tdid" + i).innerHTML = j;
+             j = j + 1;
+          }
+       }
 
-    .img-border img {
-        border: 1px solid #aaa;
-        width: 300px;
-        height: auto;
-        object-fit: cover;
-    }
+       //----------------------------------------------------------次月
+       document.getElementById("funNext").onclick = function (){
+          objDate.setMonth(objDate.getMonth() +1 );
+          document.getElementById("p1").innerHTML = objDate.getFullYear() + '年' + (objDate.getMonth() + 1) + ' 月のカレンダー<br>';
+          j = 1;                                                      //1日からカウントする為だけの変数
+          objDate.setDate(1);
+          let vEndDate = new Date(objDate.getFullYear(),objDate.getMonth() + 1, 0);   //今月末日取得
+          for(let x=0;x<42;x++){                                          //表の値を初期化
+             document.getElementById("tdid" + x).innerHTML = "　";
+          }
+          for(i=objDate.getDay();i<vEndDate.getDate() + objDate.getDay();i++){
+             document.getElementById("tdid" + i).innerHTML = j;
+             j = j + 1;
+          }
+       }
 
-    .img-object-fit {
-        padding: 0 !important;
-    }
-
-    .img-object-fit img {
-        width: 250px;
-        height: 250px;
-        object-fit: cover;
-    }
-
-    .img-object-fitradius {
-        padding: 0 !important;
-    }
-
-    .img-object-fit-radius img {
-        width: 250px;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 50%;
-    }
-
-    .img-center {
-        text-align: center;
-        padding: 0;
-        !important;
-    }
-
-    .img-right {
-        text-align: right;
-        padding: 0;
-        !important;
-    }
-
-    .img-float-left {
-        float: left;
-        padding: 0 !important;
-        margin: 0 1em 1em 0;
-    }
-
-    .img-float-left img {
-        display: block;
-    }
-
-    .img-float-right {
-        float: right;
-        padding: 0 !important;
-        margin: 0 0 1em 1em;
-    }
-
-    .img-float-right img {
-        display: block;
-    }
-
-    .img-filter {
-        background-color: pink;
-        padding: 0;
-        !important;
-    }
-
-    .img-filter img {
-        display: block;
-        opacity: 0.6;
-    }
-
-    .img-grayscale {
-        padding: 0;
-        !important;
-    }
-
-    .img-grayscale img {
-        -ms-filter: grayscale(100%);
-        filter: grayscale(100%);
-    }
-
-    .img-sepia {
-        padding: 0;
-        !important;
-    }
-
-    .img-sepia img {
-        -ms filter: sepia(60%);
-        filter: sepia(60%);
-    }
-
-    .img-saturate {
-        padding: 0 !important;
-    }
-
-    .img-saturate img {
-        -ms-filter: saturate(20%);
-        filter: saturate(20%);
-    }
-
-    .img-contrast {
-        padding: 0 !important;
-    }
-
-    .img-contrast img {
-        -ms-filter: contrast(120%);
-        filter: contrast(120%);
-    }
-
-    .img-brightness {
-        padding: 0 !important;
-    }
-
-    :right .img-brightness img {
-        -ms-filter: brightness(120%);
-        filter: brightness(120%);
-    }
-
-
-    .img-text {
-        position: relative;
-        padding: 0;
-        !important;
-    }
-
-    .img-text .img-text-paragraph {
-        position: absolute;
-        top: 80%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        margin: 0;
-        padding: 0;
-        font-size: 1.2em;
-        line-height: 1.8;
-        font-weight: bold;
-        color: #fff;
-        filter: drop-shadow(0px 0px 3px #333);
-    }
-
-    .img-text img {
-        width: 100%;
-    }
-
-    .balloon2 {
-        position: relative;
-        display: inline-block;
-        margin: 1.5em 0;
-        padding: 7px 10px;
-        min-width: 120px;
-        max-width: 100%;
-        color: #555;
-        font-size: 16px;
-        background: #FFF;
-        border: solid 3px #555;
-        border-radius: 15px;
-    }
-
-    .balloon2:before {
-        content: "";
-        position: absolute;
-        bottom: -24px;
-        left: 50%;
-        margin-left: -15px;
-        border: 12px solid transparent;
-        border-top: 12px solid #FFF;
-        z-index: 2;
-    }
-
-    .balloon2:after {
-        content: "";
-        position: absolute;
-        bottom: -30px;
-        left: 50%;
-        margin-left: -17px;
-        border: 14px solid transparent;
-        border-top: 14px solid #555;
-        z-index: 1;
-    }
-
-    .balloon2 p {
-        margin: 0;
-        padding: 0;
-    }
-
-    .sanpo {
-        position: relative;
-        margin: 2em 0 2em 40px;
-        padding: 8px 15px;
-        background: #fff0c6;
-        border-radius: 30px;
-    }
-
-    .sanpo:before {
-        font-family: FontAwesome;
-        content: "\f111";
-        position: absolute;
-        font-size: 15px;
-        left: -40px;
-        bottom: 0;
-        color: #fff0c6;
-    }
-
-    .sanpo:after {
-        font-family: FontAwesome;
-        content: "\f111";
-        position: absolute;
-        font-size: 23px;
-        left: -23px;
-        bottom: 0;
-        color: #fff0c6;
-    }
-
-    .sanpo p {
-        margin: 0;
-        padding: 0;
-    }
-
-    .balloon {
-        margin-bottom: 2em;
-        position: relative;
-    }
-
-    .balloon:before,
-    .balloon:after {
-        clear: both;
-        content: "";
-        display: block;
-    }
-
-    .balloon figure {
-        width: 60px;
-        height: 60px;
-    }
-
-    .balloon-image-left {
-        float: left;
-        margin-right: 20px;
-    }
-
-    .balloon-image-right {
-        float: right;
-        margin-left: 20px;
-    }
-
-    .balloon figure img {
-        width: 100%;
-        height: 100%;
-        border: 1px solid #aaa;
-        border-radius: 50%;
-        margin: 0;
-    }
-
-    .balloon-image-description {
-        padding: 5px 0 0;
-        font-size: 10px;
-        text-align: center;
-    }
-
-    .balloon-text-right,
-    .balloon-text-left {
-        position: relative;
-        padding: 10px;
-        border: 1px solid;
-        border-radius: 10px;
-        max-width: -webkit-calc(100% - 120px);
-        max-width: calc(100% - 120px);
-        display: inline-block;
-    }
-
-    .balloon-text-right {
-        border-color: #aaa;
-    }
-
-    .balloon-text-left {
-        border-color: #aaa;
-    }
-
-    .balloon-text-right {
-        float: left;
-    }
-
-    .balloon-text-left {
-        float: right;
-    }
-
-    .balloon p {
-        margin: 0 0 20px;
-    }
-
-    .balloon p:last-child {
-        margin-bottom: 0;
-    }
-
-    /* 三角部分 */
-    .balloon-text-right:before {
-        position: absolute;
-        content: '';
-        border: 10px solid transparent;
-        border-right: 10px solid #aaa;
-        top: 15px;
-        left: -20px;
-    }
-
-    .balloon-text-right:after {
-        position: absolute;
-        content: '';
-        border: 10px solid transparent;
-        border-right: 10px solid #fff;
-        top: 15px;
-        left: -19px;
-    }
-
-    .balloon-text-left:before {
-        position: absolute;
-        content: '';
-        border: 10px solid transparent;
-        border-left: 10px solid #aaa;
-        top: 15px;
-        right: -20px;
-    }
-
-    .balloon-text-left:after {
-        position: absolute;
-        content: '';
-        border: 10px solid transparent;
-        border-left: 10px solid #fff;
-        top: 15px;
-        right: -19px;
-    }
-</style>
-<p class="img-border">
-    <img src="IMG_5309.jpg">
-</p>
-<p class="img-object-fit">
-    <img src="IMG_5309.jpg">
-</p>
-<p class="img-object-fit-radius">
-    <img src="IMG_5309.jpg">
-</p>
-<p class="img-center">
-    <img src="IMG_5309.jpg">
-</p>
-<p class="img-right">
-    <img src="IMG_5309.jpg">
-</p>
-
-<p>A Happy New Year 2023 A Happy New Year 2023 A Happy New Year 2023 A Happy New Year 2023 A Happy New Year 2023 A Happy
-    New Year 2023 </p>
-<p class="img-float-left">
-    <img src="IMG_5309.jpg">
-</p>
-<p>A Happy New Year 2023 A Happy New Year 2023</p>
-
-<p>A Happy New Year 2023</p>
-<p class="img-float-right">
-    <img src="IMG_5309.jpg">
-</p>
-<p>A Happy New Year 2023</p>
-
-<p class="img-filter">
-    <img src="IMG_5309.jpg">
-</p>
-<p class="img-grayscale">
-    <img src="IMG_5309.jpg">
-</p>
-<p class="img-sepia">
-    <img src="IMG_5309.jpg">
-</p>
-<p class="img saturate">
-    <img src="IMG_5309.jpg">
-</p>
-<p class="img-contrast">
-    <img src="IMG_5309.jpg">
-</p>
-<p class="img-brightness">
-    <img src="IMG_5309.jpg">
-</p>
-<div class="img-text">
-    <img src="IMG_5309.jpg">
-    <p class="img-text-paragraph">A Happy New Year 2023</p>
-</div>
-
-<div class="balloon2">
-    <p>呼んだ？</p>
-</div>
-<p><img src="IMG_1766.jpg"></p>
-<div class="sanpo">
-    <p>散歩行きたくない。。。</p>
-    <p><img src="IMG_1840.jpg"></p>
-</div>
-<div class="balloon">
-    <figure class="balloon-image-left">
-        <img src="IMG_1845.jpg" alt="髪ゴムで遊ぶしろ">
-        <figcaption class="balloon-image-description">
-            寝転がって遊ぶしろ
-        </figcaption>
-    </figure>
-    <div class="balloon-text-right">
-        <p>楽しい〜
-        </p>
-    </div>
-</div>
+    </script>
+ </body>

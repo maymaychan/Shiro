@@ -1,5 +1,4 @@
 <style>
-
     .wrapper {
         max-width: 600px;
         margin: 0 auto;
@@ -39,6 +38,11 @@
 
     /*日曜日*/
     td:first-child {
+        color: red;
+    }
+
+    /*祝日*/
+    td:holiday {
         color: red;
     }
 
@@ -94,11 +98,11 @@
 <body>
     <p>
         <image src="IMG_5665.jpg" width="150px" align="left">
-        
+
     </p>
     <p>
         <image src="IMG_4156.jpg" width="150px" align="right">
-        
+
     </p>
     <!-- xxxx年xx月を表示 -->
     <h1 id="header"></h1>
@@ -187,9 +191,3 @@
 
 
 </body>
-
-
-
-
-
-

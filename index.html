@@ -4,139 +4,197 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <title>豆柴しろ</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <style>
+    @media screen and (min-width:481px) {
+        body {
 
 
-@media screen and (max-width:480px) {
- 
- /*　画面サイズが480px以下の場合ここの記述が適用される　*/
+            img {
+                width: 100%;
+            }
 
-}
 
-    body {
-        background-color: #e4d2d8;
-    }
-    
-.box17{
-    margin:2em 0;
-    position: relative;
-    padding: 0.5em 1.5em;
-    border-top: solid 2px #918754;
-    border-bottom: solid 2px #918754;
-}
-.box17:before, .box17:after{
-    content: '';
-    position: absolute;
-    top: -10px;
-    width: 2px;
-    height: -webkit-calc(100% + 20px);
-    height: calc(100% + 20px);
-    background-color: #918754;
-}
-.box17:before {left: 10px;}
-.box17:after {right: 10px;}
-.box17 p {
-    margin: 0; 
-    padding: 0;
-}
-h1{color: #8c6450;
-text-align: center;}
-img{width:100%;
-height: 650px;
-object-fit:cover;
-}
-.image {
-	position: relative;
-}
-p{position: absolute;
-    top:50%;
-    left:20%;
-    padding:0;
-    margin:0;
-    font-size:50px;
-    color: #38b48b;}
-.image::after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: calc(100% - 20px);
-	height: calc(100% - 20px);
-	border-image-source: repeating-linear-gradient(45deg, #fff, #fff 3px, rgba(0 0 0 / 0) 0, rgba(0 0 0 / 0) 6px);
-	border-image-slice: 20;
-	border-image-repeat: round;
-	border-style: solid;
-	border-width: 20px;
-}
-     
+            .title {
+                text-align: center;
+            }
+
+            .text {
+                display: inline-block;
+                font-size: 5vw;
+            }
+
+            .p {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                font-size: 1vw;
+                display: inline-block;
+            }
+
+            .profile {
+                font-family: cursive;
+                font-weight: bold;
+                color: darkolivegreen;
+                display: inline-block;
+                font-size: 5vw;
+            }
+
+        }
+
+
+
+        body {
+            background-color: #e4d2d8;
+        }
+
+        .box17 {
+            margin: 2em 0;
+            position: relative;
+            padding: 0.5em 1.5em;
+            border-top: solid 2px #918754;
+            border-bottom: solid 2px #918754;
+        }
+
+        .box17:before,
+        .box17:after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            width: 2px;
+            height: -webkit-calc(100% + 20px);
+            height: calc(100% + 20px);
+            background-color: #918754;
+        }
+
+        .box17:before {
+            left: 10px;
+        }
+
+        .box17:after {
+            right: 10px;
+        }
+
+        .box17 p {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #8c6450;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        img {
+            max-width: 100%;
+            height: 650px;
+            object-fit: cover;
+            box-sizing: border-box;
+        }
+
+        .image {
+            position: relative;
+        }
+
+        p {
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            padding: 0;
+            margin: 0;
+            font-size: 50px;
+        }
+
+        .image::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            border-image-source: repeating-linear-gradient(45deg, #fff, #fff 3px, rgba(0 0 0 / 0) 0, rgba(0 0 0 / 0) 6px);
+            border-image-slice: 20;
+            border-image-repeat: round;
+            border-style: solid;
+            border-width: 20px;
+        }
+
+        .profile {
+            font-family: cursive;
+            font-weight: bold;
+            color: darkolivegreen;
+            display: inline-block;
+        }
 </style>
-<script type="text/javascript"><!--
-myMsg = "はじめまして！しろです。";
-myCnt = 0;
+<script type="text/javascript">< !-
+        myMsg = "はじめまして！しろです。";
+    myCnt = 0;
 
-function myFunc(){
-     document.myForm.myFormMes.value = myMsg.substring( 0 , myCnt ) + "_";
-     myCnt = ( myCnt == myMsg.length ) ? 0 : myCnt+1;
-}
-// --></SCRIPT>
+    function myFunc() {
+        document.myForm.myFormMes.value = myMsg.substring(0, myCnt) + "_";
+        myCnt = (myCnt == myMsg.length) ? 0 : myCnt + 1;
+    }
+    // --></SCRIPT>
 
 <form name="myForm">
-<input type="text" size="30" name="myFormMes">
+    <input type="text" size="30" name="myFormMes">
 </form>
-<script type="text/javascript"><!--
-setInterval("myFunc()",200);
-// --></script>
+<script type="text/javascript">< !-
+        setInterval("myFunc()", 200);
+    // -->
+    function disableScroll(event) {
+        event.preventDefault()
+            ;
+    }
+
+</script>
 <form>
-<input type="button" value="戻る" onclick="history.back()">
-<input type="button" value="更新" onclick="location.reload(true)">
-<input type="button" value="進む" onclick="history.forward()">
-<input type="button" value="トップページへ" onclick="location.href='http://www.red.oit-net.jp/tatsuya/index.htm'">
+    <input type="button" value="戻る" onclick="history.back()">
+    <input type="button" value="更新" onclick="location.reload(true)">
+    <input type="button" value="進む" onclick="history.forward()">
+    <input type="button" value="トップページへ" onclick="location.href='http://www.red.oit-net.jp/tatsuya/index.htm'">
 </form>
 
-<script type="text/javascript"><!--
-myTbl = new Array("日","月","火","水","木","金","土");
-myD = new Date();
+<script type="text/javascript">< !-
+        myTbl = new Array("日", "月", "火", "水", "木", "金", "土");
+    myD = new Date();
 
-myYear = myD.getFullYear();
-myMonth = myD.getMonth() + 1;
-myDate = myD.getDate();
-myDay = myD.getDay();
-myHours = myD.getHours();
-myMinutes = myD.getMinutes();
-mySeconds = myD.getSeconds();
+    myYear = myD.getFullYear();
+    myMonth = myD.getMonth() + 1;
+    myDate = myD.getDate();
+    myDay = myD.getDay();
+    myHours = myD.getHours();
+    myMinutes = myD.getMinutes();
+    mySeconds = myD.getSeconds();
 
-myMess1 = myYear + "年" + myMonth + "月" + myDate + "日";
-myMess2 = myTbl[myDay] + "曜日";
-myMess3 = myHours + "時" + myMinutes + "分" + mySeconds + "秒";
-myMess = myMess1 + " " + myMess2 + " " + myMess3;
-document.write( myMess );
-// --></script><br>
+    myMess1 = myYear + "年" + myMonth + "月" + myDate + "日";
+    myMess2 = myTbl[myDay] + "曜日";
+    myMess3 = myHours + "時" + myMinutes + "分" + mySeconds + "秒";
+    myMess = myMess1 + " " + myMess2 + " " + myMess3;
+    document.write(myMess);
+    // --></script>
 
 <body>
     <div class="box17">
-    <h1>豆柴しろのホームページへようこそ！</h1>
-</div>
-        <div class="image">
-            <p>自己紹介<br>
-                2021年3月1日生まれ<br>
-                食べることとお昼寝が大好きな男の子です。<br>
-                </p>
+        <h1 class="title">
+            <span class="text">豆柴しろのホームページへ</span>
+            <span class="text">ようこそ！</span>
+        </h1>
+    </div>
+    <div class="image">
+        <p><span class="profile">Profile</span>
+            <span class="profile">2021年3月1日生まれ</span>
+            <span class="profile">食べることとお昼寝が</span>
+            <span class="profile">大好きな男の子です。</span>
+        </p>
         <img src="IMG_3473.jpg">
-        </div>
-
-
-
-
-
-
-
-    
+    </div>
     </div><br>
 
     <a href="page1.html">#しろちゃんの1日#こちらをクリック☆</a><br>

@@ -1,4 +1,18 @@
-@charset　"utf-8";
+@charset "utf-8";
 h1{
     color:aquamarine;
+}
+img{
+    width:100%;
+}
+.image{
+    position: relative;
+}
+.image p{
+    position: absolute;
+    font-size: 20px;
+    color: #fff;
+    bottom: 30px;
+    width: 50%;
+    right: 20px;
 }
